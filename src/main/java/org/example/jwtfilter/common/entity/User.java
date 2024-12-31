@@ -12,6 +12,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.jwtfilter.common.enums.UserRoleEnum;
+import org.example.jwtfilter.user.model.request.CreateUserRequest;
 
 @Entity
 @Getter
@@ -41,5 +42,9 @@ public class User {
         this.password = password;
         this.email = email;
         this.role = role;
+    }
+
+    public static User createUser(CreateUserRequest request) {
+        return new User(request.userName(), request.password(), request.email(),request.role());
     }
 }
