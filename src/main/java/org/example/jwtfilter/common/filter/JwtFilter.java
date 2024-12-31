@@ -21,6 +21,7 @@ public class JwtFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
         throws IOException, ServletException {
+        //
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         String requestURI = httpRequest.getRequestURI();
@@ -28,8 +29,10 @@ public class JwtFilter implements Filter {
         String jwt = null;
 
 
+
         String authorizationHeader = httpRequest.getHeader("Authorization");
 
+        // 고급 개발자
 
         // 처음 로그인 하는 거야? 그럼 JWT 토큰이 없을 것이니 토큰 먼저 발급 받아!
         if(requestURI.equals("/api/login")) {
@@ -52,6 +55,7 @@ public class JwtFilter implements Filter {
         jwt = authorizationHeader.substring(7);
 
         // Secret Key 는 내가 만든게 맞는지 검증 만료 기간 지났는지 검증
+        // Key , 만료기간이 지났는지 지나지 않았는지
         if (!jwtUtil.validateToken(jwt)) {
             httpResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
             httpResponse.getWriter().write("{\"error\": \"Unauthorized\"}");

@@ -25,3 +25,8 @@ public class LoginController {
         return ResponseEntity.ok(new LoginResponse(token));
     }
 }
+
+
+// 1. 로그인을 하겠죠?
+
+// 2. 아이디와 비밀번호가 일치하는 경우  JWT 토큰이 하나가 발생이 됩니다.

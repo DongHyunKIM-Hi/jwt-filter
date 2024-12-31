@@ -51,7 +51,8 @@ public class JwtUtil {
         return extractAllClaims(token).getSubject();
     }
 
-
+// 어떻게 동작하는지 디버깅 모드로 한줄씩 찍어보기
+    // 아이유 권한으로 User 전용 API를 호출할 때
 
     /**
      * JWT 토큰에서 모든 클레임을 추출합니다.
@@ -83,6 +84,8 @@ public class JwtUtil {
                 .signWith(key, signatureAlgorithm) // 비밀 키와 알고리즘으로 서명
                 .compact(); // JWT 토큰 생성
     }
+
+    // 이 문자열은 JWT야 약속이 되어 있음.
 
     /**
      * JWT 토큰에서 역할(권한) 정보를 추출합니다.
