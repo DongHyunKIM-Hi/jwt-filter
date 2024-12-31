@@ -3,6 +3,7 @@ package org.example.jwtfilter.user.service;
 import java.io.IOException;
 import java.sql.SQLException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.jwtfilter.common.entity.User;
 import org.example.jwtfilter.common.utils.JwtUtil;
 import org.example.jwtfilter.common.utils.PasswordEncoder;
@@ -11,9 +12,12 @@ import org.example.jwtfilter.user.model.request.LoginRequest;
 import org.example.jwtfilter.user.model.response.CreateUserResponse;
 import org.example.jwtfilter.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class UserService {
 

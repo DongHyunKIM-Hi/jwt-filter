@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.jwtfilter.user.model.request.CreateUserRequest;
 import org.example.jwtfilter.user.model.response.CreateUserResponse;
+import org.example.jwtfilter.user.service.OuterService;
 import org.example.jwtfilter.user.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,10 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class NormalController {
 
     private final UserService userService;
+    private final OuterService outerService;
 
     @GetMapping("/get")
     public String getUserInfo(HttpServletRequest request) {
-        log.info("일반적으로 모두 사용할 수 있는 페이지 호출");
+        outerService.outerRequired();
         return "일반 페이지 리소스가 허가 되었습니다.";
     }
 
