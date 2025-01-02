@@ -12,9 +12,7 @@ import org.example.jwtfilter.user.model.request.LoginRequest;
 import org.example.jwtfilter.user.model.response.CreateUserResponse;
 import org.example.jwtfilter.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 @Service
 @Slf4j
@@ -75,6 +73,19 @@ public class UserService {
         User user = User.createUser(request);
         userRepository.save(user);
         throw new RuntimeException();
+    }
+
+    @Transactional
+    public CreateUserResponse createUserV6(CreateUserRequest request) {
+
+        try {
+            User user = User.createUser(request);
+            userRepository.save(user);
+            throw new RuntimeException();
+        } catch (Exception e) {
+            System.out.println("예외를 잡았지롱~~~~~~");
+            throw e;
+        }
     }
 
 

@@ -20,8 +20,8 @@ public class OuterService {
         innerService.innerSupports();  // SUPPORTS
         innerService.innerNotSupported();  // NOT_SUPPORTED
         innerService.innerMandatory();  // MANDATORY
-        innerService.innerNever();  // NEVER
-        innerService.innerNested();  // NESTED
+        //innerService.innerNever();  // NEVER
+        //innerService.innerNested();  // NESTED
     }
 
     private void logTransaction(String methodName) {

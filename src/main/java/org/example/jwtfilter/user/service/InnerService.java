@@ -43,6 +43,20 @@ public class InnerService {
         logTransaction("innerNested");
     }
 
+
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void innerRequired2() {
+        logTransaction("innerRequired");
+        innerRequiresNew();
+        innerSupports();
+        innerNotSupported();
+        innerMandatory();
+        innerNever();
+    }
+
+
+
     private void logTransaction(String methodName) {
         if (TransactionSynchronizationManager.isActualTransactionActive()) {
             System.out.printf("[%s] 트랜잭션 활성화됨. 이름: %s%n",
